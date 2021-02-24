@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    ListExams Page
+{% endblock %}
+
+{% block header %}
+    <h1>
+        List Exams
+    </h1>
+{% endblock %}
+
+
+{% block content %}
+    <br>
+    <table style="width:100%">
+        <tr>
+            <th>
+                #
+            </th>
+            <th>
+                Exam Name
+            </th>
+            <th>
+                Total Number Of Questions
+            </th>
+            <th>
+                Link
+            </th>
+        </tr>
+
+        {% for exam in rows %}
+            <tr>
+                <td>
+                    {{ exam.examno }}
+                </td>
+                <td>
+                    {{ exam.examname }}
+                </td>
+                <td>
+                    {{ exam.noq }}
+                </td>
+                <td>
+                    <a href="/exams/{{ exam.examno }}">{{ exam.examname }} linki</a>
+                </td>
+            </tr>
+        {% endfor %}
+
+    </table>
+{% endblock %}

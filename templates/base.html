@@ -1,20 +1,66 @@
-<!doctype html>
-<title>{% block title %}{% endblock %} - Flaskr</title>
-<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-<nav>
-  <h1>Flaskr</h1>
-    <ul>
-        <li><a href={{ url_for('index') }}>Index</a></li>
-        <li><a href={{ url_for('list_items') }}>List Items</a></li>
-        <li><a href={{ url_for('add_item') }}>Add Items</a></li>
-    </ul>
-</nav>
-<section class="content">
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>
+      OnlineExamSytem - 
+                        {% block title %}
+                        {% endblock %}
+    </title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css"/>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='base.css') }}"/>
+  </head>
+
+
   <header>
-    {% block header %}{% endblock %}
+    <nav class="navbar" aria-label="main navigation">
+      <div class="navbar-brand">
+        <span class="navbar-item">
+          <a class="button is-link" href="{{ url_for('index') }}">Home</a>
+        </span>
+        <span class="navbar-item">
+          <a class="button is-link" href="{{ url_for('list_exams') }}">List Exams</a>
+        </span>
+        <span class="navbar-item">
+          <a class="button is-link" href="{{ url_for('create_exam') }}">Create Exam</a>
+        </span>
+        <span class="navbar-item">
+          <a class="button is-link" href="{{ url_for('login') }}">Login</a>
+        </span>
+        <span class="navbar-item">
+          <a class="button is-link" href="{{ url_for('logout') }}">Logout</a>
+        </span>
+      </div>
+    </nav>
   </header>
-  {% for message in get_flashed_messages() %}
-    <div class="flash">{{ message }}</div>
-  {% endfor %}
-  {% block content %}{% endblock %}
-</section>
+
+  <body>
+    <section class="content">
+      <header>
+        {% block header %}
+        {% endblock %}
+      </header>
+  
+      {% for message in get_flashed_messages() %}
+        <div class="flash">
+          {{ message }}
+        </div>
+      {% endfor %}
+  
+      {% block content %}
+      {% endblock %}
+    </section>
+  </body>
+
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p>
+        <strong>&copy; 2021-2022 Uğur Karamollaoğlu 05180000770</strong>
+      </p>
+    </div>
+  </footer>
+</html>

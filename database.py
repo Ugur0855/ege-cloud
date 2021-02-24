@@ -6,6 +6,9 @@ from config import Configuration
 
 class Database:
     def __init__(self):
+        self.exams = {}
+        self._last_exam_key = 0
+        
         self.config = Configuration("config.json").config["database"]
         self.connection = psycopg2.connect("host={0} user={1} dbname={2} password={3} sslmode={4}"
                                            .format(self.config["host"],
