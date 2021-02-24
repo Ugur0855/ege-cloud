@@ -4,6 +4,8 @@ from flask_login import LoginManager
 from user import get_user
 import views
 
+from database import Database
+
 def create_app():
     app = Flask(__name__)
     app.secret_key = '!$w4wW~o|~8OVFX'  # !!change this with random key!!
